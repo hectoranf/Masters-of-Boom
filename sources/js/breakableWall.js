@@ -2,7 +2,7 @@ class BreakableWall extends Tile {
       constructor(ctx, size, posX, posY) {
             super(ctx, size, posX, posY)
 
-            this.tile = new Sprite(ctx, 100, 'breakableWallSprites.png', 9, size, size)
+            this.tile = new Sprite(ctx, 100, 'breakableWallSprites.png', 9, 55, 55)
 
             //Propiedades de paredes
             this.isBlocking = true

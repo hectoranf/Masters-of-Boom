@@ -14,6 +14,7 @@ const app = {
       menu: undefined,
       game: undefined,
       isPlaying: undefined,
+      musicDom: undefined,
 
       init(canvasId) {
             //Se prepara el Canvas
@@ -26,6 +27,7 @@ const app = {
 
             //Crea el nivel de juego
             this.game = new Game(this.ctx, this.canvasSize)
+            this.musicDom = document.getElementById('game-music')
 
             this.isPlaying = false
 
@@ -47,8 +49,8 @@ const app = {
 
       setDimensions() {
             //Propiedades de Game
-            this.canvasSize.width = 975
-            this.canvasSize.height = 845
+            this.canvasSize.width = 825
+            this.canvasSize.height = 715
             //Atributos nodo canvas
             this.canvasDom.width = this.canvasSize.width
             this.canvasDom.height = this.canvasSize.height
@@ -64,10 +66,16 @@ const app = {
                         //ENTER
                         case 13:
                               if (!this.isPlaying) {
-                                    this.isPlaying = true
                                     this.game.initialize()
+                                    this.musicDom.pause()
+                                    this.musicDom = document.getElementById('game-music')
+                                    this.musicDom.play()
+                                    this.isPlaying = true
                               } else {
                                     if (!this.game.isPlaying) {
+                                          this.musicDom.pause()
+                                          this.musicDom = document.getElementById('menu-music')
+                                          this.musicDom.play()
                                           this.isPlaying = false
                                     }
                               }

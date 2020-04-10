@@ -3,11 +3,26 @@ class Game {
             this.ctx = ctx
             this.canvasSize = canvasSize
 
-            this.tileSize = 65
+            this.tileSize = 55
 
             this.isPlaying = false
             this.playerWins = false
             this.gameOver = false
+            this.victoryImg = {
+                  img: new Image(),
+                  width: undefined,
+                  height: undefined,
+                  posX: undefined,
+                  posY: undefined
+            }
+            this.gameOverImg = {
+                  img: new Image(),
+                  width: undefined,
+                  height: undefined,
+                  posX: undefined,
+                  posY: undefined
+            }
+            this.initEndingImg()
 
             this.lifeDOM = document.querySelector('#player-lifes')
 
@@ -22,6 +37,7 @@ class Game {
 
             this.setListeners()
       }
+
 
 
       initialize() {
@@ -313,13 +329,28 @@ class Game {
             this.ctx.fillRect(0, 0, this.canvasSize.width, this.canvasSize.height)
       }
 
+      initEndingImg() {
+            this.victoryImg.img.src = './images/Victory.png'
+            this.victoryImg.width = this.canvasSize.width
+            this.victoryImg.height = this.victoryImg.width * 0.3
+            this.victoryImg.posX = (this.canvasSize.width - this.victoryImg.width) / 2
+            this.victoryImg.posY = 130
+
+            this.gameOverImg.img.src = './images/Gameover.png'
+            this.gameOverImg.width = this.canvasSize.width
+            this.gameOverImg.height = this.gameOverImg.width * 0.3
+            this.gameOverImg.posX = (this.canvasSize.width - this.gameOverImg.width) / 2
+            this.gameOverImg.posY = 130
+      }
+
       drawGameOver() {
             this.drawBackground()
             this.ctx.fillStyle = 'snow'
             this.ctx.textAlign = 'center'
             this.ctx.font = `bold 35px Courier New`
+            this.ctx.drawImage(this.gameOverImg.img, this.gameOverImg.posX, this.gameOverImg.posY, this.gameOverImg.width, this.gameOverImg.height)
 
-            this.ctx.fillText('- Press <ENTER> to go back to MENU -', this.canvasSize.width / 2, 520)
+            this.ctx.fillText('- Press <ENTER> to go back to MENU -', this.canvasSize.width / 2, 420)
       }
 
       drawVictory() {
@@ -327,8 +358,9 @@ class Game {
             this.ctx.fillStyle = 'snow'
             this.ctx.textAlign = 'center'
             this.ctx.font = `bold 35px Courier New`
+            this.ctx.drawImage(this.victoryImg.img, this.victoryImg.posX, this.victoryImg.posY, this.victoryImg.width, this.victoryImg.height)
 
-            this.ctx.fillText('- Press <ENTER> to go back to MENU -', this.canvasSize.width / 2, 520)
+            this.ctx.fillText('- Press <ENTER> to go back to MENU -', this.canvasSize.width / 2, 420)
       }
 
 

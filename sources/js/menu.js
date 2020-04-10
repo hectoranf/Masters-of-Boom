@@ -23,7 +23,7 @@ class Menu {
             this.gameTitle.width = this.canvasSize.width / 1.5
             this.gameTitle.height = this.gameTitle.width * 0.625
             this.gameTitle.posX = (this.canvasSize.width - this.gameTitle.width) / 2
-            this.gameTitle.posY = 75
+            this.gameTitle.posY = 60
       }
 
       update() {
@@ -41,6 +41,6 @@ class Menu {
             this.ctx.textAlign = 'center'
             this.ctx.font = `bold ${this.fontSize}px Courier New`
 
-            this.ctx.fillText(this.text, this.canvasSize.width / 2, 600)
+            this.ctx.fillText(this.text, this.canvasSize.width / 2, 450)
       }
 }
